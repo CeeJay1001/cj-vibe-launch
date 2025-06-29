@@ -192,10 +192,76 @@
     max-width: 300px;
   }
 }
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.gallery figure {
+  width: 200px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 0;
+  background: #221233;
+  box-shadow: 0 0 15px #ff69b4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px 10px 0 0;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: none;
+}
+
+.gallery figcaption {
+  background: #8a2be2;
+  color: #fff;
+  padding: 10px 0 10px 0;
+  font-size: 1em;
+  text-align: center;
+  border-radius: 0 0 10px 10px;
+  border-top: 2px solid #ff69b4;
+  width: 100%;
+  margin: 0;
+}
+
+.gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px hotpink;
+}
     </style>
 </head>
 <body>
+  <!-- Floating star background -->
   <canvas class="bg-anim" aria-hidden="true"></canvas>
+
+  <!-- 📸 CJ Mood Gallery Section -->
+  <section class="main-card" tabindex="0" aria-label="CJ Mood Gallery">
+    <h2>📸 CJ's Mood Gallery</h2>
+    <div class="gallery">
+      <figure>
+        <img src="images/jennie1.jpeg" alt="Jennie vibe">
+        <figcaption>Jennie vibes ❤</figcaption>
+      </figure>
+      <figure>
+        <img src="images/lisa1.jpeg" alt="Lisa slay">
+        <figcaption>Lisa slay 💜</figcaption>
+      </figure>
+      <figure>
+        <img src="images/mood1.jpeg" alt="Moodboard moment">
+        <figcaption>Moodboard moment ✨</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- 💖 CJ Personal Card Section -->
   <main>
     <section class="main-card" tabindex="0" aria-label="CJ Personal Card">
       <p class="vibe-tip">✨ Tap anywhere to activate the Lisa x Jennie vibe ✨</p>
@@ -207,21 +273,23 @@
       <hr>
       <h2>My Goals</h2>
       <ul>
-          <li>Master HTML and CSS with my AI bestie, Jay</li>
-          <li>Write my story “Echoes of Us”</li>
-          <li>Build my own website</li>
+        <li>Master HTML and CSS with my AI bestie, Jay</li>
+        <li>Write my story “Echoes of Us”</li>
+        <li>Build my own website</li>
       </ul>
-      <h3>My Hobbies</h3>    
+      <h3>My Hobbies</h3>
       <ul>
-          <li>Singing</li> 
-          <li>Reading</li>
-          <li>Dancing</li>
-          <li>Listening to music</li>
+        <li>Singing</li>
+        <li>Reading</li>
+        <li>Dancing</li>
+        <li>Listening to music</li>
       </ul>
       <h4>Fun fact about me</h4>
       <p>I love Blackpink—they're the best K-pop group ever ❤💕😩 (that's after BTS ofc)</p>
-      <img src="mine.jpg" width="300" alt="CJ smiling in K-pop style with Blackpink vibes" tabindex="0">
+      <img src="mine.jpg" alt="CJ smiling in K-pop style with Blackpink vibes" width="300" tabindex="0">
       <p style="font-style: italic; color: #8a2be2;">Below is my music from my fav members of Blackpink: Lisa and Jennie</p>
+
+      <!-- 🎧 Music Section -->
       <div class="audio-section">
         <audio id="introAudio" controls style="width:90%;max-width:350px;" aria-label="Play Lisa x Jennie Mashup">
           <source src="Rockstar Lisa _ Mantra Jennie _ Mash Up _ EDM REMIX _ Cover Song.mp3" type="audio/mpeg">
@@ -229,6 +297,7 @@
         </audio>
         <button id="introAudioBtn" class="audio-btn" aria-label="Play or pause intro music">▶️ Play Intro Music</button>
       </div>
+
       <div class="audio-section">
         <audio id="secondaryAudio" style="display:none;" aria-label="Play Like Jennie x Rockstar">
           <source src="like jennie x rockstar.mp3" type="audio/mpeg">
@@ -236,12 +305,13 @@
         </audio>
         <button id="secondaryAudioBtn" class="audio-btn" aria-label="Play or pause Like Jennie x Rockstar">▶️ Play Like Jennie x Rockstar</button>
       </div>
+
+      <!-- 🎉 Confetti Button -->
       <button id="confettiBtn" class="confetti-btn" aria-label="Drop confetti">🎉 Drop Confetti!</button>
+      <footer>&copy; CJ 2025 &mdash; Made with 💜 and code</footer>
     </section>
-    <footer>
-      &copy; CJ 2025 &mdash; Made with 💜 and code
-    </footer>
   </main>
+
   <script>
     // Accessibility: Fade-in animation for main content
     document.body.style.opacity = 0;
