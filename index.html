@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> CJ made it</title>
+    <link rel="icon" type="image/png" href="mine.jpg">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+            background: linear-gradient(135deg, #1a1333 0%, #2d1436 100%);
+            color: #f3eaff;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow-x: hidden;
+        }
+        .bg-anim {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .main-card {
+            background: rgba(34, 18, 51, 0.98);
+            border-radius: 18px;
+            box-shadow: 0 8px 32px 0 rgba(138,43,226,0.18), 0 1.5px 8px #ff69b4;
+            padding: 36px 32px 32px 32px;
+            max-width: 420px;
+            width: 95vw;
+            margin: 40px 0;
+            text-align: center;
+            border: 1.5px solid #8a2be2;
+            position: relative;
+            z-index: 1;
+            transition: box-shadow 0.4s, transform 0.3s;
+        }
+        .main-card:focus-within, .main-card:hover {
+            box-shadow: 0 12px 40px 0 #ff69b4, 0 2px 12px #8a2be2;
+            transform: translateY(-2px) scale(1.01);
+        }
+        h1 {
+            color: #ff69b4;
+            font-size: 2.2em;
+            margin-bottom: 0.2em;
+            text-shadow: 0 2px 12px #8a2be2;
+        }
+        h2, h3, h4 {
+            color: #b2a4ff;
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
+        }
+        img {
+            border: 4px solid #ff69b4;
+            border-radius: 12px;
+            width: 300px;
+            max-width: 90vw;
+            box-shadow: 0 0 24px #8a2be2;
+            transition: box-shadow 0.3s, filter 0.3s;
+            margin: 18px 0 10px 0;
+        }
+        img:hover, img:focus {
+            box-shadow: 0 0 50px #ff69b4;
+            filter: brightness(1.1) saturate(1.2);
+            outline: 2px solid #ff69b4;
+        }
+        ul {
+            list-style-type: circle;
+            padding-left: 1.2em;
+            text-align: left;
+            margin: 0 auto 1em auto;
+            max-width: 320px;
+        }
+        hr {
+            border: 1px solid #b2a4ff;
+            margin: 1.5em 0;
+        }
+        .audio-section {
+            margin: 1.5em 0 0.5em 0;
+        }
+        .audio-btn {
+            display: block;
+            margin: 10px auto 0 auto;
+            padding: 10px 22px;
+            font-size: 1em;
+            background: #2d1436;
+            color: #ff69b4;
+            border:2px solid #ff69b4;
+            border-radius: 8px;
+            cursor:pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 10px #8a2be2;
+            outline: none;
+        }
+        .audio-btn:hover, .audio-btn:focus {
+            background: #ff69b4;
+            color: #2d1436;
+            box-shadow: 0 0 30px #ff1493;
+            outline: 2px solid #b2a4ff;
+        }
+        .confetti-btn {
+            display:block;
+            margin: 20px auto 0 auto;
+            padding: 12px 28px;
+            font-size: 1.2em;
+            background: linear-gradient(90deg,#8a2be2,#ff69b4);
+            color: #fff;
+            border:none;
+            border-radius: 8px;
+            cursor:pointer;
+            box-shadow:0 0 10px #ff69b4;
+            transition: box-shadow 0.3s, transform 0.2s;
+            outline: none;
+        }
+        .confetti-btn:hover, .confetti-btn:focus {
+            box-shadow: 0 0 30px #ff1493;
+            transform: scale(1.04);
+            outline: 2px solid #b2a4ff;
+        }
+        .vibe-tip {
+            font-style: italic;
+            color: #ff69b4;
+            margin-top: 1.2em;
+            margin-bottom: 0.5em;
+        }
+        footer {
+            color: #b2a4ff;
+            text-align: center;
+            font-size: 1em;
+            margin-top: 18px;
+            letter-spacing: 0.04em;
+            opacity: 0.8;
+        }
+        @media (max-width: 600px) {
+            .main-card {
+                padding: 18px 4vw 18px 4vw;
+                max-width: 99vw;
+            }
+            img {
+                width: 90vw;
+            }
+            ul {
+                max-width: 95vw;
+            }
+        }
+    </style>
+</head>
+<body onload="playAudio()">
+  <canvas class="bg-anim"></canvas>
+  <div style="display:flex; flex-direction:column; align-items:center; justify-content:center; min-height:100vh; width:100vw;">
+    <div class="main-card" tabindex="0">
+       <p class="vibe-tip" style="margin-top:32px;">✨ Tap anywhere to activate the Lisa x Jennie vibe ✨</p>
+       <h1>Hey there, I'm CJ💕</h1>
+      <p>
+          I’m a straight A student with a zeal for learning new things and I love to code!
+          <br>Welcome to my first own made website.
+      </p>
+      <hr>
+      <h2>My Goals</h2>
+      <ul>
+          <li>Master HTML and CSS with my AI bestie, Jay</li>
+          <li>Write my story “Echoes of Us”</li>
+          <li>Build my own website</li>
+      </ul>
+      <h3>My Hobbies</h3>    
+      <ul>
+          <li>Singing</li> 
+          <li>Reading</li>
+          <li>Dancing</li>
+          <li>Listening to music</li>
+      </ul>
+      <h4>Fun fact about me</h4>
+      <p>I love Blackpink—they're the best K-pop group ever ❤💕😩 (that's after BTS ofc)</p>
+      <img src="mine.jpg" width="300" alt="CJ with Blackpink vibes" tabindex="0">
+      <p style="font-style: italic; color: #8a2be2;">Below is my music from my fav members of Blackpink: Lisa and Jennie</p>
+      <div class="audio-section">
+        <audio id="introAudio" controls style="width:90%;max-width:350px;" aria-label="Play Lisa x Jennie Mashup">
+          <source src="Rockstar Lisa _ Mantra Jennie _ Mash Up _ EDM REMIX _ Cover Song.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <button id="introAudioBtn" class="audio-btn" aria-label="Play or pause intro music">▶️ Play Intro Music</button>
+      </div>
+      <div class="audio-section">
+        <audio id="secondaryAudio" style="display:none;" aria-label="Play Like Jennie x Rockstar">
+          <source src="like jennie x rockstar.mp3" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+        <button id="secondaryAudioBtn" class="audio-btn" aria-label="Play or pause Like Jennie x Rockstar">▶️ Play Like Jennie x Rockstar</button>
+      </div>
+      <button id="confettiBtn" class="confetti-btn" aria-label="Drop confetti">🎉 Drop Confetti!</button>
+    </div>
+    <footer>
+      &copy; CJ 2025 &mdash; Made with 💜 and code
+    </footer>
+  </div>
+  <script>
+    // Animated background: floating stars
+    const canvas = document.querySelector('.bg-anim');
+    const ctx = canvas.getContext('2d');
+    let stars = [];
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    function createStars() {
+      stars = [];
+      for (let i = 0; i < 60; i++) {
+        stars.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          r: Math.random() * 1.5 + 0.5,
+          d: Math.random() * 0.5 + 0.2,
+          o: Math.random() * 0.5 + 0.5
+        });
+      }
+    }
+    function drawStars() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const s of stars) {
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, 2 * Math.PI);
+        ctx.fillStyle = `rgba(178,164,255,${s.o})`;
+        ctx.shadowColor = '#8a2be2';
+        ctx.shadowBlur = 8;
+        ctx.fill();
+      }
+    }
+    function animateStars() {
+      for (const s of stars) {
+        s.y += s.d;
+        if (s.y > canvas.height) {
+          s.y = 0;
+          s.x = Math.random() * canvas.width;
+        }
+      }
+      drawStars();
+      requestAnimationFrame(animateStars);
+    }
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      createStars();
+    });
+    resizeCanvas();
+    createStars();
+    animateStars();
+
+    function playAudio() {
+      const audio = document.getElementById("introAudio");
+      if (!audio) return;
+      audio.play().catch(() => {
+        document.body.addEventListener("click", () => {
+          audio.play();
+        }, { once: true });
+      });
+    }
+
+    // Fade-in animation for main content
+    document.body.style.opacity = 0;
+    document.body.style.transition = 'opacity 1.2s';
+    window.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => { document.body.style.opacity = 1; }, 100);
+    });
+
+    // Responsive image
+    const img = document.querySelector('img');
+    if (img) {
+      img.style.maxWidth = '90vw';
+      img.style.width = '300px';
+      img.style.height = 'auto';
+    }
+
+    // Confetti button logic
+    const confettiBtn = document.getElementById('confettiBtn');
+    confettiBtn.onclick = dropConfetti;
+    confettiBtn.onmouseenter = () => confettiBtn.style.boxShadow = '0 0 30px #ff1493';
+    confettiBtn.onmouseleave = () => confettiBtn.style.boxShadow = '0 0 10px #ff69b4';
+
+    // Play/pause toggle for intro audio
+    const audio = document.getElementById('introAudio');
+    const audioBtn = document.getElementById('introAudioBtn');
+    let isPlaying = false;
+    audioBtn.onclick = () => {
+      if (isPlaying) {
+        audio.pause();
+      } else {
+        audio.play();
+      }
+    };
+    audio.addEventListener('play', () => {
+      isPlaying = true;
+      audioBtn.textContent = '⏸️ Pause Intro Music';
+    });
+    audio.addEventListener('pause', () => {
+      isPlaying = false;
+      audioBtn.textContent = '▶️ Play Intro Music';
+    });
+
+    // Play/pause for secondary audio
+    const secondaryAudio = document.getElementById('secondaryAudio');
+    const secondaryAudioBtn = document.getElementById('secondaryAudioBtn');
+    let isSecondaryPlaying = false;
+    secondaryAudioBtn.onclick = () => {
+      if (isSecondaryPlaying) {
+        secondaryAudio.pause();
+      } else {
+        secondaryAudio.play();
+      }
+    };
+    secondaryAudio.addEventListener('play', () => {
+      isSecondaryPlaying = true;
+      secondaryAudioBtn.textContent = '⏸️ Pause Like Jennie x Rockstar';
+      alert("✨ Playing: Like Jennie x Rockstar✨ Get ready to slay!");
+    });
+    secondaryAudio.addEventListener('pause', () => {
+      isSecondaryPlaying = false;
+      secondaryAudioBtn.textContent = '▶️ Play Like Jennie x Rockstar';
+    });
+
+    // Prevent double confetti on tap (when audio is not yet played)
+    let confettiOnTap = true;
+    document.body.addEventListener('click', function confettiTapHandler(e) {
+      // Don't trigger if the click was on a button
+      if (e.target.tagName === 'BUTTON') return;
+      if (audio.paused && confettiOnTap) {
+        dropConfetti();
+        confettiOnTap = false;
+        setTimeout(() => { confettiOnTap = true; }, 1000);
+      }
+    });
+
+    document.getElementById("introAudio").addEventListener("play", function () {
+      dropConfetti();
+    });
+
+    // Enhanced confetti: random colors
+    function dropConfetti() {
+      for (let i = 0; i < 5; i++) {
+        confetti({
+          particleCount: 500,
+          angle: 60 + i * 15,
+          spread: 100,
+          origin: { y: 0.6 },
+          colors: [
+            '#000000', // black
+            '#b2a4ff', // light purple
+            '#8a2be2', // purple
+            '#ff69b4', // hot pink
+            '#ff1493', // deep pink
+            '#c71585'  // purple-pink
+          ].sort(() => 0.5 - Math.random()).slice(0, 4)
+        });
+      }
+    }
+  </script>
+</body>
+</html>
+<!-- This is a simple HTML page with a personal touch, featuring confetti effects, audio controls, and a vibrant design. -->
+<!-- The page is designed to be responsive and includes interactive elements like buttons for playing audio and triggering
