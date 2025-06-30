@@ -70,6 +70,17 @@ main {
   transition: box-shadow 0.4s, transform 0.3s;
 }
 
+.main-card.hidden {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
+}
+
+.main-card.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
 .main-card:focus-within, .main-card:hover {
   box-shadow: 0 12px 40px 0 #ff69b4, 0 2px 12px #8a2be2;
   transform: translateY(-2px) scale(1.01);
@@ -199,6 +210,12 @@ footer {
   z-index: 10;
   padding: 10px 0;
   box-shadow: 0 4px 12px rgba(255,105,180,0.3);
+  opacity: 0;
+  animation: navbarFadeIn 1.2s 0.2s forwards;
+}
+
+.navbar.visible {
+  opacity: 1;
 }
 
 .navbar ul {
@@ -223,6 +240,11 @@ footer {
 
 .navbar a:hover {
   color: #b2a4ff;
+}
+
+@keyframes navbarFadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 600px) {
@@ -253,12 +275,6 @@ footer {
     margin: 0 0 15px 0;
   }
   .gallery img {
-    width: 100%;
-    max-width: 100%;
-    border-radius: 10px 10px 0 0;
-    display: block;
-  }
-  img {
     width: 100%;
     max-width: 95vw;
     height: auto;
@@ -314,8 +330,15 @@ footer {
   height: auto;
   display: block;
   border-radius: 10px 10px 0 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.3s, filter 0.3s;
   box-shadow: none;
+}
+
+.gallery img:hover, .gallery img:focus {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 0 40px #ff69b4, 0 0 12px #8a2be2;
+  filter: brightness(1.1) saturate(1.2);
+  outline: 2px solid #ff69b4;
 }
 
 .gallery figcaption {
@@ -330,10 +353,34 @@ footer {
   margin: 0;
 }
 
-.gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px hotpink;
+/* Animations for fade-in, slide-up, and pop/rotate */
+.hidden {
+  opacity: 0;
+  transform: translateY(40px) scale(0.98);
+  transition: opacity 0.8s cubic-bezier(.4,0,.2,1), transform 0.8s cubic-bezier(.4,0,.2,1);
 }
+.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.navbar {
+  opacity: 0;
+  animation: navbarFadeIn 1.2s 0.2s forwards;
+}
+@keyframes navbarFadeIn {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.gallery img {
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), box-shadow 0.3s, filter 0.3s;
+}
+.gallery img:hover, .gallery img:focus {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 0 40px #ff69b4, 0 0 12px #8a2be2;
+  filter: brightness(1.1) saturate(1.2);
+  outline: 2px solid #ff69b4;
+}
+/* End animations */
     </style>
 </head>
 <nav class="navbar">
