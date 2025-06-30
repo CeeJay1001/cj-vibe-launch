@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CJ made it</title>
     <meta name="description" content="CJ's personal website: coding, music, and K-pop vibes!">
     <meta name="keywords" content="CJ, Blackpink, personal website, coding, K-pop, student">
@@ -15,164 +13,258 @@
     <link rel="icon" href="favicon.png" type="image/png">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
     <style>
-        body {
-            font-family: 'Segoe UI', 'Times New Roman', Times, serif;
-            background: linear-gradient(135deg, #1a1333 0%, #2d1436 100%);
-            color: #f3eaff;
-            min-height: 100vh;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow-x: hidden;
-            transition: opacity 1.2s;
-        }
-        main {
-            width: 100vw;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
-        .bg-anim {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            pointer-events: none;
-            z-index: 0;
-        }
-        .main-card {
-            background: rgba(34, 18, 51, 0.98);
-            border-radius: 18px;
-            box-shadow: 0 8px 32px 0 rgba(138,43,226,0.18), 0 1.5px 8px #ff69b4;
-            padding: 36px 32px 32px 32px;
-            max-width: 420px;
-            width: 95vw;
-            margin: 40px 0;
-            text-align: center;
-            border: 1.5px solid #8a2be2;
-            position: relative;
-            z-index: 1;
-            transition: box-shadow 0.4s, transform 0.3s;
-        }
-        .main-card:focus-within, .main-card:hover {
-            box-shadow: 0 12px 40px 0 #ff69b4, 0 2px 12px #8a2be2;
-            transform: translateY(-2px) scale(1.01);
-        }
-        h1, h2, h3, h4 {
-            font-family: inherit;
-        }
-        h1 {
-            color: #ff69b4;
-            font-size: 2.2em;
-            margin-bottom: 0.2em;
-            text-shadow: 0 2px 12px #8a2be2;
-        }
-        h2, h3, h4 {
-            color: #b2a4ff;
-            margin-top: 1.2em;
-            margin-bottom: 0.5em;
-        }
-        img {
-            border: 4px solid #ff69b4;
-            border-radius: 12px;
-            width: 300px;
-            max-width: 90vw;
-            box-shadow: 0 0 24px #8a2be2;
-            transition: box-shadow 0.3s, filter 0.3s;
-            margin: 18px 0 10px 0;
-            height: auto;
-        }
-        img:hover, img:focus {
-            box-shadow: 0 0 50px #ff69b4;
-            filter: brightness(1.1) saturate(1.2);
-            outline: 2px solid #ff69b4;
-        }
-        ul {
-            list-style-type: circle;
-            padding-left: 1.2em;
-            text-align: left;
-            margin: 0 auto 1em auto;
-            max-width: 320px;
-        }
-        hr {
-            border: 1px solid #b2a4ff;
-            margin: 1.5em 0;
-        }
-        .audio-section {
-            margin: 1.5em 0 0.5em 0;
-        }
-        .audio-btn {
-            display: block;
-            margin: 10px auto 0 auto;
-            padding: 10px 22px;
-            font-size: 1em;
-            background: #2d1436;
-            color: #ff69b4;
-            border:2px solid #ff69b4;
-            border-radius: 8px;
-            cursor:pointer;
-            transition: all 0.3s;
-            box-shadow: 0 0 10px #8a2be2;
-            outline: none;
-        }
-        .audio-btn:focus {
-            outline: 3px solid #b2a4ff;
-        }
-        .audio-btn:hover, .audio-btn:focus {
-            background: #ff69b4;
-            color: #2d1436;
-            box-shadow: 0 0 30px #ff1493;
-        }
-        .confetti-btn {
-            display:block;
-            margin: 20px auto 0 auto;
-            padding: 12px 28px;
-            font-size: 1.2em;
-            background: linear-gradient(90deg,#8a2be2,#ff69b4);
-            color: #fff;
-            border:none;
-            border-radius: 8px;
-            cursor:pointer;
-            box-shadow:0 0 10px #ff69b4;
-            transition: box-shadow 0.3s, transform 0.2s;
-            outline: none;
-        }
-        .confetti-btn:focus {
-            outline: 3px solid #b2a4ff;
-        }
-        .confetti-btn:hover, .confetti-btn:focus {
-            box-shadow: 0 0 30px #ff1493;
-            transform: scale(1.04);
-        }
-        .vibe-tip {
-            font-style: italic;
-            color: #ff69b4;
-            margin-top: 1.2em;
-            margin-bottom: 0.5em;
-        }
-        footer {
-            color: #b2a4ff;
-            text-align: center;
-            font-size: 1em;
-            margin-top: 18px;
-            letter-spacing: 0.04em;
-            opacity: 0.8;
-        }
-        @media (max-width: 600px) {
-            .main-card {
-                padding: 18px 4vw 18px 4vw;
-                max-width: 99vw;
-            }
-            img {
-                width: 90vw;
-            }
-            ul {
-                max-width: 95vw;
-            }
-        }
-        @media screen and (max-width: 600px) {
+      html, body {
+  width: 100vw;
+  max-width: 100vw;
+  overflow-x: hidden;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', 'Times New Roman', Times, serif;
+  background: linear-gradient(135deg, #1a1333 0%, #2d1436 100%);
+  color: #f3eaff;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  transition: opacity 1.2s;
+}
+
+main {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.bg-anim {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.main-card {
+  background: rgba(34, 18, 51, 0.98);
+  border-radius: 18px;
+  box-shadow: 0 8px 32px 0 rgba(138,43,226,0.18), 0 1.5px 8px #ff69b4;
+  padding: 36px 32px 32px 32px;
+  width: 100%;
+  max-width: 420px;
+  margin: 70px auto 40px auto;
+  text-align: center;
+  border: 1.5px solid #8a2be2;
+  position: relative;
+  z-index: 1;
+  transition: box-shadow 0.4s, transform 0.3s;
+}
+
+.main-card:focus-within, .main-card:hover {
+  box-shadow: 0 12px 40px 0 #ff69b4, 0 2px 12px #8a2be2;
+  transform: translateY(-2px) scale(1.01);
+}
+
+h1, h2, h3, h4 {
+  font-family: inherit;
+}
+
+h1 {
+  color: #ff69b4;
+  font-size: 2.2em;
+  margin-bottom: 0.2em;
+  text-shadow: 0 2px 12px #8a2be2;
+}
+
+h2, h3, h4 {
+  color: #b2a4ff;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+img {
+  border: 4px solid #ff69b4;
+  border-radius: 12px;
+  width: 300px;
+  max-width: 90vw;
+  box-shadow: 0 0 24px #8a2be2;
+  transition: box-shadow 0.3s, filter 0.3s;
+  margin: 18px 0 10px 0;
+  height: auto;
+}
+
+img:hover, img:focus {
+  box-shadow: 0 0 50px #ff69b4;
+  filter: brightness(1.1) saturate(1.2);
+  outline: 2px solid #ff69b4;
+}
+
+ul {
+  list-style-type: circle;
+  padding-left: 1.2em;
+  text-align: left;
+  margin: 0 auto 1em auto;
+  max-width: 320px;
+}
+
+hr {
+  border: 1px solid #b2a4ff;
+  margin: 1.5em 0;
+}
+
+.audio-section {
+  margin: 1.5em 0 0.5em 0;
+}
+
+.audio-btn {
+  display: block;
+  margin: 10px auto 0 auto;
+  padding: 10px 22px;
+  font-size: 1em;
+  background: #2d1436;
+  color: #ff69b4;
+  border:2px solid #ff69b4;
+  border-radius: 8px;
+  cursor:pointer;
+  transition: all 0.3s;
+  box-shadow: 0 0 10px #8a2be2;
+  outline: none;
+}
+
+.audio-btn:focus {
+  outline: 3px solid #b2a4ff;
+}
+
+.audio-btn:hover, .audio-btn:focus {
+  background: #ff69b4;
+  color: #2d1436;
+  box-shadow: 0 0 30px #ff1493;
+}
+
+.confetti-btn {
+  display:block;
+  margin: 20px auto 0 auto;
+  padding: 12px 28px;
+  font-size: 1.2em;
+  background: linear-gradient(90deg,#8a2be2,#ff69b4);
+  color: #fff;
+  border:none;
+  border-radius: 8px;
+  cursor:pointer;
+  box-shadow:0 0 10px #ff69b4;
+  transition: box-shadow 0.3s, transform 0.2s;
+  outline: none;
+}
+
+.confetti-btn:focus {
+  outline: 3px solid #b2a4ff;
+}
+
+.confetti-btn:hover, .confetti-btn:focus {
+  box-shadow: 0 0 30px #ff1493;
+  transform: scale(1.04);
+}
+
+.vibe-tip {
+  font-style: italic;
+  color: #ff69b4;
+  margin-top: 1.2em;
+  margin-bottom: 0.5em;
+}
+
+footer {
+  color: #b2a4ff;
+  text-align: center;
+  font-size: 1em;
+  margin-top: 18px;
+  letter-spacing: 0.04em;
+  opacity: 0.8;
+}
+
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: #221233;
+  z-index: 10;
+  padding: 10px 0;
+  box-shadow: 0 4px 12px rgba(255,105,180,0.3);
+}
+
+.navbar ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar li {
+  margin: 0 15px;
+}
+
+.navbar a {
+  color: #ff69b4;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1em;
+  transition: color 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #b2a4ff;
+}
+
+@media (max-width: 600px) {
+  html, body {
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+  .main-card {
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+    padding: 10px 0 18px 0;
+    margin: 70px 0 20px 0;
+  }
+  .gallery {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    width: 100vw;
+    max-width: 100vw;
+    box-sizing: border-box;
+  }
+  .gallery figure {
+    max-width: 95vw;
+    width: 100%;
+    margin: 0 0 15px 0;
+  }
+  .gallery img {
+    width: 100%;
+    max-width: 100vw;
+    border-radius: 10px 10px 0 0;
+    display: block;
+  }
+  img {
+    width: 100%;
+    max-width: 95vw;
+    height: auto;
+  }
+  .navbar {
+    font-size: 0.95em;
+    padding: 6px 0;
+  }
+}
+
+@media screen and (max-width: 600px) {
   body {
     padding: 10px;
     font-size: 16px;
@@ -193,29 +285,27 @@
     max-width: 300px;
   }
 }
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   justify-content: center;
   margin-top: 20px;
+  box-sizing: border-box;
 }
 
 .gallery figure {
-  width: 200px;
-  border-radius: 10px;
-  overflow: hidden;
-  margin: 0;
-  background: #221233;
-  box-shadow: 0 0 15px #ff69b4;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  width: 100%;
+  max-width: 200px;
+  margin: 0 auto 15px auto;
 }
 
 .gallery img {
   width: 100%;
+  max-width: 100%;
   height: auto;
+  display: block;
   border-radius: 10px 10px 0 0;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   box-shadow: none;
@@ -239,12 +329,20 @@
 }
     </style>
 </head>
+<nav class="navbar">
+  <ul>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#about">About Me</a></li>
+    <li><a href="#music">Music</a></li>
+    <li><a href="#confetti">Confetti!</a></li>
+  </ul>
+</nav>
 <body>
   <!-- Floating star background -->
   <canvas class="bg-anim" aria-hidden="true"></canvas>
 
   <!-- 📸 CJ Mood Gallery Section -->
-  <section class="main-card" tabindex="0" aria-label="CJ Mood Gallery">
+  <section class="main-card" id="gallery" tabindex="0" aria-label="CJ Mood Gallery" style="margin-top:70px;">
     <h2>📸 CJ's Mood Gallery</h2>
     <div class="gallery">
       <figure>
@@ -264,7 +362,7 @@
 
   <!-- 💖 CJ Personal Card Section -->
   <main>
-    <section class="main-card" tabindex="0" aria-label="CJ Personal Card">
+    <section class="main-card" id="about" tabindex="0" aria-label="CJ Personal Card">
       <p class="vibe-tip">✨ Tap anywhere to activate the Lisa x Jennie vibe ✨</p>
       <h1>Hey there, I'm CJ💕</h1>
       <p>
@@ -291,7 +389,7 @@
       <p style="font-style: italic; color: #8a2be2;">Below is my music from my fav members of Blackpink: Lisa and Jennie</p>
 
       <!-- 🎧 Music Section -->
-      <div class="audio-section">
+      <div class="audio-section" id="music">
         <audio id="introAudio" controls style="width:90%;max-width:350px;" aria-label="Play Lisa x Jennie Mashup">
           <source src="Rockstar Lisa _ Mantra Jennie _ Mash Up _ EDM REMIX _ Cover Song.mp3" type="audio/mpeg">
           Your browser does not support the audio element.
@@ -308,8 +406,8 @@
       </div>
 
       <!-- 🎉 Confetti Button -->
-      <button id="confettiBtn" class="confetti-btn" aria-label="Drop confetti">🎉 Drop Confetti!</button>
-      <footer>&copy; CJ 2025 &mdash; Made with 💜 and code</footer>
+      <button id="confettiBtn" class="confetti-btn" aria-label="Drop confetti" style="margin-bottom: 10px;">🎉 Drop Confetti!</button>
+      <footer id="confetti">&copy; CJ 2025 &mdash; Made with 💜 and code</footer>
     </section>
   </main>
 
@@ -474,5 +572,21 @@
       }
     }
   </script>
+  <script>
+  const cards = document.querySelectorAll('.main-card');
+
+  const appear = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach(card => {
+    card.classList.add('hidden');
+    appear.observe(card);
+  });
+</script>
 </body>
 </html>
